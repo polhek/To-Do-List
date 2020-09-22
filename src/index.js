@@ -1,4 +1,5 @@
-import "./styles/style.css"
+import "./styles/style.css";
+import { toggleChevron } from "./views/chevronItemToggle";
+const chevronItem = document.getElementById("chevron");
 
-const main = document.querySelector("main");
-main.innerHTML = "askdak"
+chevronItem.addEventListener("click", toggleChevron);
