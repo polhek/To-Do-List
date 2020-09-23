@@ -8,3 +8,7 @@ const toggleChevron = () => {
 
   console.log(chevronStyleItem);
 };
+
+const chevronItem = document.getElementById("chevron");
+
+chevronItem.addEventListener("click", toggleChevron);
