@@ -31,3 +31,4 @@ const newProjectEvent = (event) => {
   
   myProjects.push(newProject);
 };
+

@@ -5,11 +5,11 @@ const addProjectUI = (projectName) => {
   const projectListItem = document.getElementById("projectListItem");
 
   let project = projectName;
-  const listItem = document.createElement("li");
-  projectListItem.appendChild(listItem);
+  
+ 
 
   const markup = `
-  
+  <li>
       <p>${project.title}<svg id="trash" width="1em" height="1em" viewBox="0 0 16 16" class="trash bi bi-trash"
           fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -17,15 +17,15 @@ const addProjectUI = (projectName) => {
           <path fill-rule="evenodd"
             d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
         </svg></p>
+
+    </li>
     `;
 
-  listItem.innerHTML = markup;
+  projectListItem.insertAdjacentHTML('beforeend', markup)
 };
-
 
 //delete item from UI!
 export const deleteItemUI = (event) => {
-  let el = document.querySelector('.trash')
-  let itemToRemove = el.parentNode.parentNode;
+  let itemToRemove = event.target.parentNode.parentNode;
   itemToRemove.remove();
-}
+};
