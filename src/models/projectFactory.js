@@ -8,13 +8,13 @@ export {
 
 
 
-// let myProjects = [];
+let myProjects = [];
 let newProject;
-let myProjects = localStorage.getItem("projects")
-  ? JSON.parse(localStorage.getItem("projects"))
-  : [
+// let myProjects = localStorage.getItem("projects")
+//   ? JSON.parse(localStorage.getItem("projects"))
+//   : [
     
-  ];
+//   ];
 
 
 const saveToLocalStorage = () => {

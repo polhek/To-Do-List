@@ -58,7 +58,7 @@ newProjectListener.addEventListener("submit", (event) => {
   } else {
     newProjectEvent(event);
     addProjectUI(newProject);
-    saveToLocalStorage(myProjects);
+   // saveToLocalStorage(myProjects);
     emptyForm();
   }
 });
@@ -75,8 +75,8 @@ window.addEventListener("click", (event) => {
     deleteProject(itemToRemove);
     deleteItemUI(itemToRemove);
     cleanToDoView();
-    localStorage.clear();
-    saveToLocalStorage(myProjects);
+    // localStorage.clear();
+    // saveToLocalStorage(myProjects);
   }
 });
 
@@ -106,8 +106,8 @@ newToDoListener.addEventListener("submit", (event) => {
     newToDoEvent(event, clickedProjectIndex);
     let toDo = newToDo;
     appendToDo(toDo);
-    localStorage.clear();
-    saveToLocalStorage(myProjects);
+    // localStorage.clear();
+    // saveToLocalStorage(myProjects);
     emptyToDoForm();
   }
 });
@@ -122,8 +122,8 @@ tableListener.addEventListener("click", (event) => {
     let deleteItem = element;
     deleteToDoFromObject(deleteItem, clickedProjectIndex);
     deletToDoUI(deleteItem);
-    localStorage.clear();
-    saveToLocalStorage(myProjects);
+    // localStorage.clear();
+    // saveToLocalStorage(myProjects);
   }
 });
 
@@ -144,8 +144,8 @@ editToDo.addEventListener("submit", (event) => {
   editFinish(clickedProjectIndex, toDoIndex);
   cleanToDoView();
   render();
-  localStorage.clear();
-  saveToLocalStorage(myProjects);
+  // localStorage.clear();
+  // saveToLocalStorage(myProjects);
 });
 
 const render = () => {
