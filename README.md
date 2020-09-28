@@ -8,7 +8,7 @@ This is a project made for the The Odin Project curriculum. The main goal of thi
 Live demo you can find on this link: https://polhek.github.io/To-Do-List/
 
 # Screenshot of the site: 
-[Screenshot-2020-09-28-at-17-48-08.png](https://postimg.cc/nsQDYW6T)
+[![Screenshot-2020-09-28-at-17-48-08.png](https://i.postimg.cc/q71x0VQf/Screenshot-2020-09-28-at-17-48-08.png)](https://postimg.cc/nsQDYW6T)
 
 # What I Learned?
 - Webpack
