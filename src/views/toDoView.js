@@ -25,7 +25,7 @@ const appendToDo = (toDo) => {
       </button></td>
   </tr>
     `;
-
+  console.log(toDo)
   tableBody.insertAdjacentHTML("beforeend", markup);
 };
 
