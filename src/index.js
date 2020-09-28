@@ -5,6 +5,7 @@ import {
   newProjectEvent,
   myProjects,
   newProject,
+  saveToLocalStorage,
 } from "./models/projectFactory";
 import { addProjectUI, deleteItemUI } from "./views/projectView";
 import { emptyForm } from "./views/emptyProjectForm";
@@ -19,7 +20,12 @@ import { toDoFactory, newToDoEvent, newToDo } from "./models/toDoFactory";
 import { appendToDo, cleanToDoView, deletToDoUI } from "./views/toDoView";
 import { deleteToDoFromObject } from "./models/deleteToDo";
 import { emptyToDoForm } from "./views/emptyToDoForm";
-import { editTodo, clickedToDoInd, clickedToDoIndex, editFinish } from "./models/editToDo";
+import {
+  editTodo,
+  clickedToDoInd,
+  clickedToDoIndex,
+  editFinish,
+} from "./models/editToDo";
 
 // DOM Elements
 const tableListener = document.getElementById("tbody");
@@ -37,7 +43,7 @@ const editButton = document.getElementsByClassName("edit-button");
 // Variables
 let toDoIndex;
 let clickedProjectIndex = 0;
-defaultProject();
+
 // Add new project!
 
 newProjectListener.addEventListener("submit", (event) => {
@@ -48,6 +54,7 @@ newProjectListener.addEventListener("submit", (event) => {
   } else {
     newProjectEvent(event);
     addProjectUI(newProject);
+    saveToLocalStorage(myProjects);
     emptyForm();
   }
 });
@@ -64,6 +71,8 @@ window.addEventListener("click", (event) => {
     deleteProject(itemToRemove);
     deleteItemUI(itemToRemove);
     cleanToDoView();
+    localStorage.clear();
+    saveToLocalStorage(myProjects);
   }
 });
 
@@ -76,10 +85,6 @@ projectListDiv.addEventListener("click", (event) => {
     clickedProjectIndex = idClickedProject(event);
     cleanToDoView();
     render();
-    //loop through array of todos in project, and render them...
-    // myProjects[clickedProjectIndex].toDos.forEach((todo) => {
-    //   appendToDo(todo);
-    // });
   }
 });
 
@@ -97,6 +102,8 @@ newToDoListener.addEventListener("submit", (event) => {
     newToDoEvent(event, clickedProjectIndex);
     let toDo = newToDo;
     appendToDo(toDo);
+    localStorage.clear();
+    saveToLocalStorage(myProjects);
     emptyToDoForm();
   }
 });
@@ -111,6 +118,8 @@ tableListener.addEventListener("click", (event) => {
     let deleteItem = element;
     deleteToDoFromObject(deleteItem, clickedProjectIndex);
     deletToDoUI(deleteItem);
+    localStorage.clear();
+    saveToLocalStorage(myProjects);
   }
 });
 
@@ -131,11 +140,28 @@ editToDo.addEventListener("submit", (event) => {
   editFinish(clickedProjectIndex, toDoIndex);
   cleanToDoView();
   render();
+  localStorage.clear();
+  saveToLocalStorage(myProjects);
 });
-
 
 const render = () => {
   myProjects[clickedProjectIndex].toDos.forEach((todo) => {
     appendToDo(todo);
   });
-}
+};
+
+const initialLoad = () => {
+  myProjects.forEach((project) => {
+    addProjectUI(project);
+    const projectHeader = document.querySelector(".projectName");
+    projectHeader.textContent = project.title
+  });
+};
+initialLoad();
+
+const initalTodoLoad = () => {
+  myProjects[0].toDos.forEach((todo) => {
+    appendToDo(todo);
+  });
+};
+initalTodoLoad();
