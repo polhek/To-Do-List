@@ -43,7 +43,7 @@ const editButton = document.getElementsByClassName("edit-button");
 // Variables
 let toDoIndex;
 let clickedProjectIndex = 0;
-
+defaultProject();
 // Add new project!
 
 newProjectListener.addEventListener("submit", (event) => {
@@ -54,8 +54,8 @@ newProjectListener.addEventListener("submit", (event) => {
   } else {
     newProjectEvent(event);
     addProjectUI(newProject);
-    saveToLocalStorage(myProjects);
-    emptyForm();
+    // saveToLocalStorage(myProjects);
+    // emptyForm();
   }
 });
 
@@ -71,8 +71,8 @@ window.addEventListener("click", (event) => {
     deleteProject(itemToRemove);
     deleteItemUI(itemToRemove);
     cleanToDoView();
-    localStorage.clear();
-    saveToLocalStorage(myProjects);
+    // localStorage.clear();
+    // saveToLocalStorage(myProjects);
   }
 });
 
@@ -102,8 +102,8 @@ newToDoListener.addEventListener("submit", (event) => {
     newToDoEvent(event, clickedProjectIndex);
     let toDo = newToDo;
     appendToDo(toDo);
-    localStorage.clear();
-    saveToLocalStorage(myProjects);
+    // localStorage.clear();
+    // saveToLocalStorage(myProjects);
     emptyToDoForm();
   }
 });
@@ -118,8 +118,8 @@ tableListener.addEventListener("click", (event) => {
     let deleteItem = element;
     deleteToDoFromObject(deleteItem, clickedProjectIndex);
     deletToDoUI(deleteItem);
-    localStorage.clear();
-    saveToLocalStorage(myProjects);
+    // localStorage.clear();
+    // saveToLocalStorage(myProjects);
   }
 });
 
@@ -140,8 +140,8 @@ editToDo.addEventListener("submit", (event) => {
   editFinish(clickedProjectIndex, toDoIndex);
   cleanToDoView();
   render();
-  localStorage.clear();
-  saveToLocalStorage(myProjects);
+  // localStorage.clear();
+  // saveToLocalStorage(myProjects);
 });
 
 const render = () => {
@@ -150,18 +150,19 @@ const render = () => {
   });
 };
 
-const initialLoad = () => {
-  myProjects.forEach((project) => {
-    addProjectUI(project);
-    const projectHeader = document.querySelector(".projectName");
-    projectHeader.textContent = project.title
-  });
-};
-initialLoad();
+// const initialLoad = () => {
+//   myProjects.forEach((project) => {
+//     addProjectUI(project);
+//     console.log(project)
+//     const projectHeader = document.querySelector(".projectName");
+//     projectHeader.textContent = project.title
+//   });
+// };
+// initialLoad();
 
-const initalTodoLoad = () => {
-  myProjects[0].toDos.forEach((todo) => {
-    appendToDo(todo);
-  });
-};
-initalTodoLoad();
+// const initalTodoLoad = () => {
+//   myProjects[0].toDos.forEach((todo) => {
+//     appendToDo(todo);
+//   });
+// };
+// initalTodoLoad();

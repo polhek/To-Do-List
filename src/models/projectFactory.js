@@ -8,8 +8,14 @@ export {
 
 
 
-
+let myProjects = [];
 let newProject;
+// let myProjects = localStorage.getItem("projects")
+//   ? JSON.parse(localStorage.getItem("projects"))
+//   : [
+//     newProjectFactory(0, "Default project")
+//   ];
+
 
 const saveToLocalStorage = () => {
   localStorage.setItem("projects", JSON.stringify(myProjects));
@@ -45,8 +51,3 @@ const newProjectEvent = (event) => {
   
 };
 
-let myProjects = localStorage.getItem("projects")
-  ? JSON.parse(localStorage.getItem("projects"))
-  : [
-    newProjectFactory(0, "Default project")
-  ];
