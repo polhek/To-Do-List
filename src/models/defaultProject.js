@@ -13,7 +13,7 @@ export const defaultProject = () => {
     let newProject = newProjectFactory(ID, defaultTitle);
     myProjects.push(newProject)
     console.log(myProjects)
-    addProjectUI(newProject);
+    
     
 };
 

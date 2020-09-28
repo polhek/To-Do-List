@@ -1,1 +1,294 @@
-<!doctype html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]--><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>To-Do-List</title><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/pulse/bootstrap.min.css" integrity="sha384-L7+YG8QLqGvxQGffJ6utDKFwmGwtLcCjtwvonVZR/Ba2VzhpMwBz51GaXnUsuYbj" crossorigin="anonymous"><script src="https://use.fontawesome.com/30a34909cc.js"></script></head><body><nav class="navbar navbar-expand-lg navbar-dark bg-primary"><a class="navbar-brand" href="#"><i class="fa fa-lg fa-bars menu-icon" aria-hidden="true"></i>To Do List</a></nav><div class="container-fluid"><div class="main row"><div class="left-nav text-center float-left"><h3 class="text-left" id="chevron" data-toggle="collapse" href="#collapseExample"><i id="chevronstyle" class="fa fa-chevron-right" aria-hidden="true"></i> Projects</h3><div class="collapse" id="collapseExample"><ul id="projectListItem"></ul></div><button id="addProject" type="button" data-toggle="modal" data-target="#addProjectModal" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add New Project</button></div><div class="modal fade" id="addProjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLongTitle">Add new project ...</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><form id="projectFormListener"><div class="form-group"><label for="newProjectName">Insert name of the new project...</label> <input type="name" class="form-control" id="newProjectName" placeholder="Project name goes here"></div></form></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <button type="button submit" class="btn btn-primary" value="Submit">Submit project</button></div></div></div></div><div class="col"><div class="row"><div class="col"><h3 class="projectName">Default Project</h3></div><div class="col"><button id="addToDo" type="button submit" data-toggle="modal" data-target="#addNewNoteModal" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i> Add New To Do</button></div></div><div class="modal fade" id="addNewNoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLongTitle">Add New To Do To The Current Project</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><form id="todoFormListener"><div class="form-group row"><label class="col-4 col-form-label" for="nameToDo">Title</label><div class="col-8"><input id="nameToDo" name="nameToDo" placeholder="Insert To Do title " class="form-control"></div></div><div class="form-group row"><label for="toDoDescription" class="col-4 col-form-label">Description</label><div class="col-8"><textarea id="toDoDescription" name="toDoDescription" cols="40" rows="3" class="form-control"></textarea></div></div><div class="form-group row"><label for="toDoDate" class="col-4 col-form-label">Date</label><div class="col-8"><input class="form-control" type="date" value="2020-09-19" id="toDoDate"></div></div><div class="form-group row"><label for="toDoPriority" class="col-4 col-form-label">Priority</label><div class="col-8"><select id="toDoPriority" name="toDoPriority" class="custom-select"><option value="3">High</option><option value="2">Medium</option><option value="1">Low</option></select></div></div><div class="form-group row"><label for="toDoNote" class="col-4 col-form-label">Notes</label><div class="col-8"><textarea id="toDoNote" name="toDoNote" cols="40" rows="1" class="form-control"></textarea></div></div><div class="form-group row"><div class="offset-4 col-8"></div></div></form></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <button type="button submit" class="btn btn-primary" value="Submit">Add New To Do</button></div></div></div></div><table class="table table-hover"><thead><tr><th scope="col">Title</th><th scope="col">Description</th><th scope="col">Due Date</th><th scope="col">Priority</th><th scope="col">Notes</th><th scope="col">Finished?</th></tr></thead><tbody id="tbody"></tbody></table><div class="modal fade" id="editTodoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLongTitle">Edit current Todo</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><form id="edittodoFormListener"><div class="form-group row"><label class="col-4 col-form-label" for="editnameToDo">Title</label><div class="col-8"><input id="editnameToDo" name="editnameToDo" placeholder="Insert To Do title " class="form-control"></div></div><div class="form-group row"><label for="edittoDoDescription" class="col-4 col-form-label">Description</label><div class="col-8"><textarea id="edittoDoDescription" name="edittoDoDescription" cols="40" rows="3" class="form-control"></textarea></div></div><div class="form-group row"><label for="edittoDoDate" class="col-4 col-form-label">Date</label><div class="col-8"><input class="form-control" type="date" value="2020-09-19" id="edittoDoDate"></div></div><div class="form-group row"><label for="edittoDoPriority" class="col-4 col-form-label">Priority</label><div class="col-8"><select id="edittoDoPriority" name="edittoDoPriority" class="custom-select"><option value="3">High</option><option value="2">Medium</option><option value="1">Low</option></select></div></div><div class="form-group row"><label for="edittoDoNote" class="col-4 col-form-label">Notes</label><div class="col-8"><textarea id="edittoDoNote" name="edittoDoNote" cols="40" rows="1" class="form-control"></textarea></div></div><div class="form-group row"><div class="offset-4 col-8"></div></div></form></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <button type="button submit" class="btn btn-primary" value="Submit">Add New To Do</button></div></div></div></div></div></div></div><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script><script src="bundle.js"></script></body></html>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>To-Do-List</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/pulse/bootstrap.min.css"
+    integrity="sha384-L7+YG8QLqGvxQGffJ6utDKFwmGwtLcCjtwvonVZR/Ba2VzhpMwBz51GaXnUsuYbj" crossorigin="anonymous">
+  <script src="https://use.fontawesome.com/30a34909cc.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#"><i class="fa fa-lg fa-bars menu-icon" aria-hidden="true"></i>To Do List</a>
+
+
+
+  </nav>
+
+  <div class="container-fluid">
+    <div class="main row">
+      <div class="left-nav text-center float-left">
+        <h3 class="text-left" id="chevron" data-toggle="collapse" href="#collapseExample">
+          <i id="chevronstyle" class="fa fa-chevron-right" aria-hidden="true"></i>
+          Projects</h3>
+        <div class="collapse" id="collapseExample">
+          <ul id="projectListItem">
+
+            <!--<li>
+              <p>Default project <button class="trash-project"><svg id="trash"  width="1em" height="1em" viewBox="0 0 16 16" class="trash bi bi-trash"
+                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg></button></p>
+            </li>
+              !-->
+          </ul>
+
+        </div>
+        <button id="addProject" type="button" data-toggle="modal" data-target="#addProjectModal"
+          class="btn  btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
+          Add New Project</button>
+      </div>
+
+      <!--Modal for add project...-->
+      <div class="modal fade" id="addProjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add new project ...</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="projectFormListener">
+                <div class="form-group">
+                  <label for="newProjectName">Insert name of the new project...</label>
+                  <input type="name" class="form-control" id="newProjectName" placeholder="Project name goes here">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button submit" class="btn btn-primary" value="Submit">Submit
+                project</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <h3 class="projectName">Default Project</h3>
+          </div>
+          <div class="col">
+            <button id="addToDo" type="button submit" data-toggle="modal" data-target="#addNewNoteModal"
+              class="btn  btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i>
+              Add New To Do</button>
+          </div>
+        </div>
+
+        <!--
+                    Modal for add new note form
+                -->
+
+        <div class="modal fade" id="addNewNoteModal" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add New To Do To The Current Project</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="todoFormListener">
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label" for="nameToDo">Title</label>
+                    <div class="col-8">
+                      <input id="nameToDo" name="nameToDo" placeholder="Insert To Do title " type="text"
+                        class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="toDoDescription" class="col-4 col-form-label">Description</label>
+                    <div class="col-8">
+                      <textarea id="toDoDescription" name="toDoDescription" cols="40" rows="3"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="toDoDate" class="col-4 col-form-label">Date</label>
+                    <div class="col-8">
+                      <input class="form-control" type="date" value="2020-09-19" id="toDoDate">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="toDoPriority" class="col-4 col-form-label">Priority</label>
+                    <div class="col-8">
+                      <select id="toDoPriority" name="toDoPriority" class="custom-select">
+                        <option value="3">High</option>
+                        <option value="2">Medium</option>
+                        <option value="1">Low</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="toDoNote" class="col-4 col-form-label">Notes</label>
+                    <div class="col-8">
+                      <textarea id="toDoNote" name="toDoNote" cols="40" rows="1" class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="offset-4 col-8">
+
+                    </div>
+                  </div>
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button submit" class="btn btn-primary" value="Submit">Add New To Do</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Finished?</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <!--
+               <tr class="table-primary">
+              <th>Kupi Jogurt</th>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td>Column content</td>
+              <td><button type="button" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i>
+                </button></td>
+              <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editTodoModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                </button></td>
+            </tr>
+            -->
+          </tbody>
+        </table>
+
+            
+            
+        <div class="modal fade" id="editTodoModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Edit current Todo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="edittodoFormListener">
+                <div class="form-group row">
+                  <label class="col-4 col-form-label" for="editnameToDo">Title</label>
+                  <div class="col-8">
+                    <input id="editnameToDo" name="editnameToDo" placeholder="Insert To Do title " type="text"
+                      class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="edittoDoDescription" class="col-4 col-form-label">Description</label>
+                  <div class="col-8">
+                    <textarea id="edittoDoDescription" name="edittoDoDescription" cols="40" rows="3"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="edittoDoDate" class="col-4 col-form-label">Date</label>
+                  <div class="col-8">
+                    <input class="form-control" type="date" value="2020-09-19" id="edittoDoDate">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="edittoDoPriority" class="col-4 col-form-label">Priority</label>
+                  <div class="col-8">
+                    <select id="edittoDoPriority" name="edittoDoPriority" class="custom-select">
+                      <option value="3">High</option>
+                      <option value="2">Medium</option>
+                      <option value="1">Low</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="edittoDoNote" class="col-4 col-form-label">Notes</label>
+                  <div class="col-8">
+                    <textarea id="edittoDoNote" name="edittoDoNote" cols="40" rows="1" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="offset-4 col-8">
+
+                  </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button submit" class="btn btn-primary" value="Submit">Add New To Do</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+          
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./bundle.js"></script>
+</body>
+
+</html>
