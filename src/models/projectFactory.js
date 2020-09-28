@@ -18,17 +18,18 @@ const newProjectEvent = (event) => {
   // DOM elements of form ...
   event.preventDefault();
   const newProjectTitle = document.getElementById("newProjectName").value;
-
+  
   let ID;
-
   if (myProjects.length > 0) {
     ID = myProjects[myProjects.length - 1].id + 1;
   } else {
     ID = 0;
   }
 
-  newProject = newProjectFactory(ID ,newProjectTitle);
+  newProject = newProjectFactory(ID , newProjectTitle);
   
   myProjects.push(newProject);
+
+  
 };
 

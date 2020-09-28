@@ -5,5 +5,4 @@ export const deleteProject = (itemToRemove) => {
     [...itemToRemove.parentElement.children].indexOf(itemToRemove),
     1
   );
-  console.log(myProjects);
 };

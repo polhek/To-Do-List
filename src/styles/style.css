@@ -50,6 +50,11 @@ li {
     cursor: pointer;
 }
 
+.trash-project {
+    border: none;
+    background: none;
+}
+
 #trash:hover {
     color: red;
 }
