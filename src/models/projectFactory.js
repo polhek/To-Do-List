@@ -54,21 +54,21 @@ const newProjectEvent = (event) => {
 const loadProjectsFromLocal = () => {
   for (let i = 0; i < arrayOfLoadedProjects.length; i++) {
     const element = arrayOfLoadedProjects[i];
-    let ID = element.id;
-    let title = element.title;
+    const ID = element.id;
+    const title = element.title;
     newProject = newProjectFactory(ID, title);
     myProjects.push(newProject);
 
     // loop over every todo in project and add them to the projects...
     for (let index = 0; index < element.toDos.length; index++) {
       const toDoItem = element.toDos[index];
-      let toDoTitle = toDoItem.title;
-      let toDoDesc = toDoItem.description;
-      let dueDate = toDoItem.dueDate;
-      let priority = toDoItem.priority;
-      let status = toDoItem.status;
-      let notes = toDoItem.notes;
-      let toDo = toDoFactory(
+      const toDoTitle = toDoItem.title;
+      const toDoDesc = toDoItem.description;
+      const dueDate = toDoItem.dueDate;
+      const priority = toDoItem.priority;
+      const status = toDoItem.status;
+      const notes = toDoItem.notes;
+      const toDo = toDoFactory(
         toDoTitle,
         toDoDesc,
         dueDate,

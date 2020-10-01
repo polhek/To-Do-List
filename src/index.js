@@ -17,16 +17,11 @@ import {
   idClickedProject,
   resetClickedProject,
 } from './views/clickedProjectView';
-import { toDoFactory, newToDoEvent, newToDo } from './models/toDoFactory';
+import { newToDoEvent, newToDo } from './models/toDoFactory';
 import { appendToDo, cleanToDoView, deletToDoUI } from './views/toDoView';
 import { deleteToDoFromObject } from './models/deleteToDo';
 import { emptyToDoForm } from './views/emptyToDoForm';
-import {
-  editTodo,
-  clickedToDoInd,
-  clickedToDoIndex,
-  editFinish,
-} from './models/editToDo';
+import { editTodo, clickedToDoIndex, editFinish } from './models/editToDo';
 
 // DOM Elements
 const tableListener = document.getElementById('tbody');
@@ -39,26 +34,23 @@ const dueDate = document.getElementById('toDoDate');
 const priority = document.getElementById('toDoPriority');
 const note = document.getElementById('toDoNote');
 const editToDo = document.getElementById('edittodoFormListener');
-const editButton = document.getElementsByClassName('edit-button');
 
 // Variables
 let toDoIndex;
 let clickedProjectIndex = 0;
 
 loadProjectsFromLocal();
-if (myProjects.length == 0) {
+if (myProjects.length === 0) {
   defaultProject();
 }
 
-//defaultProject();
 // Add new project!
 
 newProjectListener.addEventListener('submit', (event) => {
   event.preventDefault();
   const newProjectTitle = document.getElementById('newProjectName').value;
 
-  if (newProjectTitle === '') {
-  } else {
+  if (newProjectTitle !== '') {
     newProjectEvent(event);
     addProjectUI(newProject);
     saveToLocalStorage(myProjects);
@@ -68,13 +60,13 @@ newProjectListener.addEventListener('submit', (event) => {
 
 // Delete project, adding event listeners to all future trash buttons for projects...
 window.addEventListener('click', (event) => {
-  let element = event.target.classList.contains('bi-trash')
+  const element = event.target.classList.contains('bi-trash')
     ? event.target.parentElement
     : event.target.classList.contains('trash-project')
     ? event.target
     : false;
   if (element) {
-    let itemToRemove = element.parentElement.parentElement;
+    const itemToRemove = element.parentElement.parentElement;
     deleteProject(itemToRemove);
     deleteItemUI(itemToRemove);
     cleanToDoView();
@@ -99,15 +91,14 @@ projectListDiv.addEventListener('click', (event) => {
 newToDoListener.addEventListener('submit', (event) => {
   event.preventDefault();
   if (
-    toDoTitle.value === '' ||
-    description.value === '' ||
-    dueDate.value === '' ||
-    priority.value === '' ||
-    note.value === ''
+    toDoTitle.value !== '' ||
+    description.value !== '' ||
+    dueDate.value !== '' ||
+    priority.value !== '' ||
+    note.value !== ''
   ) {
-  } else {
     newToDoEvent(event, clickedProjectIndex);
-    let toDo = newToDo;
+    const toDo = newToDo;
     appendToDo(toDo);
 
     saveToLocalStorage(myProjects);
@@ -122,7 +113,7 @@ tableListener.addEventListener('click', (event) => {
     ? event.target.parentElement.parentElement.parentElement
     : false;
   if (element) {
-    let deleteItem = element;
+    const deleteItem = element;
     deleteToDoFromObject(deleteItem, clickedProjectIndex);
     deletToDoUI(deleteItem);
     localStorage.clear();

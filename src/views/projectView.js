@@ -1,8 +1,8 @@
 export { addProjectUI };
 
 const addProjectUI = (projectName) => {
-  const projectListItem = document.getElementById("projectListItem");
-  let project = projectName;
+  const projectListItem = document.getElementById('projectListItem');
+  const project = projectName;
 
   const markup = `
   <li>
@@ -17,10 +17,10 @@ const addProjectUI = (projectName) => {
     </li>
     `;
 
-  projectListItem.insertAdjacentHTML("beforeend", markup);
+  projectListItem.insertAdjacentHTML('beforeend', markup);
 };
 
-//delete item from UI!
+// delete item from UI!
 export const deleteItemUI = (itemToRemove) => {
   itemToRemove.remove();
 };

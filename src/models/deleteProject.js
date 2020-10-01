@@ -1,4 +1,4 @@
-import { myProjects } from "../models/projectFactory";
+import { myProjects } from './projectFactory';
 
 export const deleteProject = (itemToRemove) => {
   myProjects.splice(
