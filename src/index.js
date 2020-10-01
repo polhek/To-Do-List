@@ -1,73 +1,76 @@
-import "./styles/style.css";
-import { toggleChevron } from "./views/chevronItemToggle";
+import './styles/style.css';
+import { toggleChevron } from './views/chevronItemToggle';
 import {
   newProjectFactory,
   newProjectEvent,
   myProjects,
   newProject,
   saveToLocalStorage,
-} from "./models/projectFactory";
-import { addProjectUI, deleteItemUI } from "./views/projectView";
-import { emptyForm } from "./views/emptyProjectForm";
-import { deleteProject } from "./models/deleteProject";
-import { defaultProject } from "./models/defaultProject";
+  loadProjectsFromLocal,
+} from './models/projectFactory';
+import { addProjectUI, deleteItemUI } from './views/projectView';
+import { emptyForm } from './views/emptyProjectForm';
+import { deleteProject } from './models/deleteProject';
+import { defaultProject } from './models/defaultProject';
 import {
   clickedProject,
   idClickedProject,
   resetClickedProject,
-} from "./views/clickedProjectView";
-import { toDoFactory, newToDoEvent, newToDo } from "./models/toDoFactory";
-import { appendToDo, cleanToDoView, deletToDoUI } from "./views/toDoView";
-import { deleteToDoFromObject } from "./models/deleteToDo";
-import { emptyToDoForm } from "./views/emptyToDoForm";
+} from './views/clickedProjectView';
+import { toDoFactory, newToDoEvent, newToDo } from './models/toDoFactory';
+import { appendToDo, cleanToDoView, deletToDoUI } from './views/toDoView';
+import { deleteToDoFromObject } from './models/deleteToDo';
+import { emptyToDoForm } from './views/emptyToDoForm';
 import {
   editTodo,
   clickedToDoInd,
   clickedToDoIndex,
   editFinish,
-} from "./models/editToDo";
+} from './models/editToDo';
 
 // DOM Elements
-const tableListener = document.getElementById("tbody");
-const projectListDiv = document.querySelector(".left-nav");
-const newProjectListener = document.getElementById("projectFormListener");
-const newToDoListener = document.getElementById("todoFormListener");
-const toDoTitle = document.getElementById("nameToDo");
-const description = document.getElementById("toDoDescription");
-const dueDate = document.getElementById("toDoDate");
-const priority = document.getElementById("toDoPriority");
-const note = document.getElementById("toDoNote");
-const editToDo = document.getElementById("edittodoFormListener");
-const editButton = document.getElementsByClassName("edit-button");
+const tableListener = document.getElementById('tbody');
+const projectListDiv = document.querySelector('.left-nav');
+const newProjectListener = document.getElementById('projectFormListener');
+const newToDoListener = document.getElementById('todoFormListener');
+const toDoTitle = document.getElementById('nameToDo');
+const description = document.getElementById('toDoDescription');
+const dueDate = document.getElementById('toDoDate');
+const priority = document.getElementById('toDoPriority');
+const note = document.getElementById('toDoNote');
+const editToDo = document.getElementById('edittodoFormListener');
+const editButton = document.getElementsByClassName('edit-button');
 
 // Variables
 let toDoIndex;
 let clickedProjectIndex = 0;
 
+loadProjectsFromLocal();
 if (myProjects.length == 0) {
   defaultProject();
 }
+
 //defaultProject();
 // Add new project!
 
-newProjectListener.addEventListener("submit", (event) => {
+newProjectListener.addEventListener('submit', (event) => {
   event.preventDefault();
-  const newProjectTitle = document.getElementById("newProjectName").value;
+  const newProjectTitle = document.getElementById('newProjectName').value;
 
-  if (newProjectTitle == "") {
+  if (newProjectTitle === '') {
   } else {
     newProjectEvent(event);
     addProjectUI(newProject);
-   // saveToLocalStorage(myProjects);
+    saveToLocalStorage(myProjects);
     emptyForm();
   }
 });
 
 // Delete project, adding event listeners to all future trash buttons for projects...
-window.addEventListener("click", (event) => {
-  let element = event.target.classList.contains("bi-trash")
+window.addEventListener('click', (event) => {
+  let element = event.target.classList.contains('bi-trash')
     ? event.target.parentElement
-    : event.target.classList.contains("trash-project")
+    : event.target.classList.contains('trash-project')
     ? event.target
     : false;
   if (element) {
@@ -75,15 +78,15 @@ window.addEventListener("click", (event) => {
     deleteProject(itemToRemove);
     deleteItemUI(itemToRemove);
     cleanToDoView();
-    // localStorage.clear();
-    // saveToLocalStorage(myProjects);
+    localStorage.clear();
+    saveToLocalStorage(myProjects);
   }
 });
 
 // clicked project
 
-projectListDiv.addEventListener("click", (event) => {
-  if (event.target.tagName == "P") {
+projectListDiv.addEventListener('click', (event) => {
+  if (event.target.tagName == 'P') {
     resetClickedProject();
     clickedProject(event);
     clickedProjectIndex = idClickedProject(event);
@@ -93,44 +96,44 @@ projectListDiv.addEventListener("click", (event) => {
 });
 
 // new to do...
-newToDoListener.addEventListener("submit", (event) => {
+newToDoListener.addEventListener('submit', (event) => {
   event.preventDefault();
   if (
-    toDoTitle.value == "" ||
-    description.value == "" ||
-    dueDate.value == "" ||
-    priority.value == "" ||
-    note.value == ""
+    toDoTitle.value === '' ||
+    description.value === '' ||
+    dueDate.value === '' ||
+    priority.value === '' ||
+    note.value === ''
   ) {
   } else {
     newToDoEvent(event, clickedProjectIndex);
     let toDo = newToDo;
     appendToDo(toDo);
-    // localStorage.clear();
-    // saveToLocalStorage(myProjects);
+
+    saveToLocalStorage(myProjects);
     emptyToDoForm();
   }
 });
 
-tableListener.addEventListener("click", (event) => {
-  let element = event.target.classList.contains("delete")
+tableListener.addEventListener('click', (event) => {
+  let element = event.target.classList.contains('delete')
     ? event.target.parentElement.parentElement
-    : event.target.classList.contains("fa-check")
+    : event.target.classList.contains('fa-check')
     ? event.target.parentElement.parentElement.parentElement
     : false;
   if (element) {
     let deleteItem = element;
     deleteToDoFromObject(deleteItem, clickedProjectIndex);
     deletToDoUI(deleteItem);
-    // localStorage.clear();
-    // saveToLocalStorage(myProjects);
+    localStorage.clear();
+    saveToLocalStorage(myProjects);
   }
 });
 
-window.addEventListener("click", (event) => {
-  let element = event.target.classList.contains("edit-button")
+window.addEventListener('click', (event) => {
+  let element = event.target.classList.contains('edit-button')
     ? event.target.parentElement.parentElement
-    : event.target.classList.contains("fa-pencil-square-o")
+    : event.target.classList.contains('fa-pencil-square-o')
     ? event.target.parentElement.parentElement.parentElement
     : false;
   if (element) {
@@ -139,13 +142,13 @@ window.addEventListener("click", (event) => {
   }
 });
 
-editToDo.addEventListener("submit", (event) => {
+editToDo.addEventListener('submit', (event) => {
   event.preventDefault();
   editFinish(clickedProjectIndex, toDoIndex);
   cleanToDoView();
   render();
-  // localStorage.clear();
-  // saveToLocalStorage(myProjects);
+  localStorage.clear();
+  saveToLocalStorage(myProjects);
 });
 
 const render = () => {
@@ -157,9 +160,9 @@ const render = () => {
 const initialLoad = () => {
   myProjects.forEach((project) => {
     addProjectUI(project);
-    console.log(project)
-    const projectHeader = document.querySelector(".projectName");
-    projectHeader.textContent = project.title
+    console.log(project);
+    const projectHeader = document.querySelector('.projectName');
+    projectHeader.textContent = project.title;
   });
 };
 initialLoad();
