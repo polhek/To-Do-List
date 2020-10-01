@@ -66,16 +66,8 @@ const loadProjectsFromLocal = () => {
       const toDoDesc = toDoItem.description;
       const dueDate = toDoItem.dueDate;
       const priority = toDoItem.priority;
-      const status = toDoItem.status;
       const notes = toDoItem.notes;
-      const toDo = toDoFactory(
-        toDoTitle,
-        toDoDesc,
-        dueDate,
-        priority,
-        status,
-        notes
-      );
+      const toDo = toDoFactory(toDoTitle, toDoDesc, dueDate, priority, notes);
       myProjects[i].add_toDo(toDo);
     }
   }
