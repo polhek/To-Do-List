@@ -1,7 +1,8 @@
 # To-Do-List
 
 
-This is a project made for the The Odin Project curriculum. The main goal of this project was to learn Webpack and using Javascript Module-s. 
+This is a project made for the The Odin Project curriculum. The main goal of this project was to learn Webpack and using Javascript Module-s. It's also using 
+local storage to save your todos and projects.
 
 # Live Page Demo
 
@@ -19,5 +20,4 @@ Live demo you can find on this link: https://polhek.github.io/To-Do-List/
 I also used quite a lot of Webpack modules and I also used Bootstrap for this project
 
 # What do I need to implement?
-
-I still have to make local storage work. Because when I save object in local storage it looses function/methods...
+Still have to improve encapsulation and abstraction (OOP).
